@@ -1,3 +1,12 @@
+// --== CS400 File Header Information ==--
+// Name: Christian Visaya
+// Email: visaya@wisc.edu
+// Team: AD
+// Role: Front End Developer #2
+// TA: Sophie Stephenson
+// Lecturer: Florian Heimerl
+// Notes to Grader: <optional extra notes>
+
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
