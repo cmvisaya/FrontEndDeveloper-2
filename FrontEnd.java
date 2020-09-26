@@ -71,10 +71,10 @@ public class FrontEnd {
 					break;
 				case 4:
 					System.out.println("Publication Year: " + book.getPublicationYear());
-					System.exit(0);
+					break;
 				case 5:
 					System.out.println("MLA Citation: " + book.getCitation());
-					System.exit(0);
+					break;
 				default:
 					System.out.println("[INVALID INPUT]");
 				}
