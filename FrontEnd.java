@@ -63,6 +63,11 @@ public class FrontEnd {
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 				System.out.print("Enter book ISBN: ");
 				String isbn = in.next();
+				if(!checkValidISBN(isbn)) {
+					System.out.println("[INVALID INPUT]");
+					in.nextLine();
+					break;
+				}
 				Book book = library.get(isbn);
 
 				System.out.println("Please select the information about this book you would like.");
@@ -123,10 +128,14 @@ public class FrontEnd {
 			int publication_year = in.nextInt();
 			System.out.print("Enter ISBN: ");
 			String isbn = in.next();
-			
-			Book added = new Book(title, author, publisher, publication_year, isbn);
-			library.add(added);
-			System.out.println(added.getTitle() + " (ISBN: " + added.getISBN() + ") has been added.");
+			if(!checkValidISBN(isbn)) {
+				System.out.println("[INVALID INPUT]");
+				in.nextLine();
+			} else {
+				Book added = new Book(title, author, publisher, publication_year, isbn);
+				library.add(added);
+				System.out.println(added.getTitle() + " (ISBN: " + added.getISBN() + ") has been added.");
+			}
 		} catch (Exception e) {
 			System.out.println("[INVALID INPUT]");
 			in.nextLine();
@@ -144,6 +153,21 @@ public class FrontEnd {
 			System.out.println("[INVALID INPUT/BOOK NOT FOUND]");
 		}
 
+	}
+	
+	public static boolean checkValidISBN(String isbn) {
+		boolean isValid = true;
+		//49 - 57
+		if(isbn.length() != 10 && isbn.length() != 13) {
+			return false;
+		}
+		
+		for(int i = 0; i < isbn.length(); i++) {
+			if(isbn.charAt(i) != 'X' && (isbn.charAt(i) < 49 || isbn.charAt(i) > 57)) {
+				isValid = false;
+			}
+		}
+		return isValid;
 	}
 
 }
